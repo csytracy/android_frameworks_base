@@ -53,6 +53,7 @@ public class FlashlightButton extends PowerButton {
 
     @Override
     protected void onReceive(Context context, Intent intent) {
-        mActive = intent.getIntExtra(TorchConstants.EXTRA_CURRENT_STATE, 0) != 0;
+        mActive = Settings.System.getInt(context.getContentResolver(),
+                Settings.System.TORCH_STATE, 0) == 1;
     }
 }
